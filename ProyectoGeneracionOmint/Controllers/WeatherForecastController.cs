@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using ProyectoGeneracionOmint.Services.Interfaces;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ProyectoGeneracionOmint.Controllers
 {
@@ -12,15 +14,18 @@ namespace ProyectoGeneracionOmint.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IInterface _interface;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IInterface @interface)
         {
             _logger = logger;
+            _interface = @interface;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            string result = _interface.HaceAlgo();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
