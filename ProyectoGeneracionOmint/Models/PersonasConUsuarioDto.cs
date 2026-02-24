@@ -1,6 +1,6 @@
 namespace ProyectoGeneracionOmint.Models;
 
-public class Persona
+public class PersonaConUsuarioDto
 {
     public int Id { get; set; }
     public string Nombre { get; set; }
@@ -8,5 +8,6 @@ public class Persona
     public string Email { get; set; }
     public int Edad { get; set; }
     public int Dni { get; set; }
-    public int UsuarioId { get; set; }
+    public string NombreUsuario { get; set; }
+    public bool Activo { get; set; }
 }

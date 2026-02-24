@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProyectoGeneracionOmint.Models;
 using ProyectoGeneracionOmint.Services;
 
 namespace ProyectoGeneracionOmint.Controllers;
@@ -22,5 +23,13 @@ public class UsuarioController : ControllerBase
     {
         var usuario = _usuarioService.ObtenerPorId(id);
         return usuario is not null ? Ok(usuario) : NotFound();
+    }
+
+    // POST /api/usuario → crea un nuevo usuario
+    [HttpPost]
+    public IActionResult CrearUsuario([FromBody] Usuario usuario)
+    {
+        var nuevoUsuario = _usuarioService.AgregarUsuario(usuario);
+        return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoUsuario.Id }, nuevoUsuario);
     }
 }

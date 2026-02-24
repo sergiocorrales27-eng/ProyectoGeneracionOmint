@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProyectoGeneracionOmint.Models;
 using ProyectoGeneracionOmint.Services;
 
 namespace ProyectoGeneracionOmint.Controllers;
@@ -22,5 +23,21 @@ public class PersonaController : ControllerBase
     {
         var persona = _personaService.ObtenerPorId(id);
         return persona is not null ? Ok(persona) : NotFound();
+    }
+
+    // GET /api/persona/dni/12345678 → retorna persona + usuario + activo
+    [HttpGet("dni/{dni}")]
+    public IActionResult ObtenerPorDni(int dni)
+    {
+        var resultado = _personaService.ObtenerPersonaConUsuarioPorDni(dni);
+        return resultado is not null ? Ok(resultado) : NotFound("No se encontró persona con ese DNI");
+    }
+
+    // POST /api/persona → crea una nueva persona
+    [HttpPost]
+    public IActionResult CrearPersona([FromBody] Persona persona)
+    {
+        var nuevaPersona = _personaService.AgregarPersona(persona);
+        return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevaPersona.Id }, nuevaPersona);
     }
 }
