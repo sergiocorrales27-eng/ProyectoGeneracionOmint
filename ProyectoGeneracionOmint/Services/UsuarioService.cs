@@ -2,7 +2,7 @@ using ProyectoGeneracionOmint.Models;
 
 namespace ProyectoGeneracionOmint.Services;
 
-public class UsuarioService
+public class UsuarioService : IUsuarioService
 {
     private readonly List<Usuario> _usuarios = new()
     {

@@ -10,6 +10,8 @@ builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddSingleton<PersonaService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
