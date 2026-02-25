@@ -11,9 +11,11 @@
         public string Sex { get; set; }
         public int PhoneNumber { get; set; }
         public string CivilStatus { get; set; }
+        public int UserId { get; set; }
+
 
         public Person() { }
-        public Person(string firstName, string lastname, string id, DateTime birthDay, string adress, string email, string sex, int phoneNumber, string civilStatus)
+        public Person(string firstName, string lastname, string id, DateTime birthDay, string adress, string email, string sex, int phoneNumber, string civilStatus, int userId)
         {
             FirstName = firstName;
             Lastname = lastname;
@@ -24,6 +26,7 @@
             Sex = sex;
             PhoneNumber = phoneNumber;
             CivilStatus = civilStatus;
+            UserId = userId;
         }
     }
 }
