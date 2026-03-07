@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Un regalo especial hecho con amor para la persona más importante de mi vida">
+  <meta name="theme-color" content="#e60073">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  
+  <!-- Preconexión para optimizar carga de fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="css/global.css" as="style">
+  <link rel="preload" href="js/main.js" as="script">
+  <link rel="prefetch" href="audio/SpotiDownloader.com - Querido Tommy - Tommy Torres.mp3" as="audio">
+
+  
+  <title>Feliz Cumple, mi amor 💕</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/effects.css">
+  
+  <!-- CSS específico para efectos especiales del index -->
+  <style>
+    /* Partículas de fondo */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Corazones flotantes */
+    .floating-hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      top: 0;
+      left: 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(230, 0, 115, 0.7);
+      font-size: 20px;
+      pointer-events: none;
+      animation: float-heart 6s infinite ease-in-out;
+    }
+
+    @keyframes float-heart {
+      0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+        transform: translateY(80vh) translateX(20px) scale(1);
+      }
+      100% {
+        transform: translateY(-10vh) translateX(-20px) scale(0.3);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float-particle {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Indicadores del carrusel */
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .indicator.active {
+      background: var(--white);
+      transform: scale(1.3);
+      border-color: var(--primary);
+    }
+
+    /* Efecto especial para las cards del index */
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
+      display: block;
+    }
+
+    /* Mensaje popup */
+    .love-popup {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      pointer-events: none;
+      opacity: 0;
+      animation: slideUpPopup 3s ease-out;
+    }
+
+    @keyframes slideUpPopup {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 50px);
+      }
+      20% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      80% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50px);
+      }
+    }
+
+    /* Efecto de revelación del texto */
+    .reveal-text {
+      opacity: 0;
+      animation: revealText 2s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes revealText {
+      0% {
+        opacity: 0;
+        letter-spacing: 0.5em;
+        filter: blur(10px);
+      }
+      100% {
+        opacity: 1;
+        letter-spacing: normal;
+        filter: blur(0);
+      }
+    }
+  </style>
+  <style>
+  /* Fix para el carrusel */
+  .carousel {
+    height: 500px; /* Altura fija */
+    position: relative;
+    overflow: hidden;
+  }
+  .carousel img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Cambiar de cover a contain para no cortar */
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  .carousel img.active {
+    opacity: 1;
+  }
+  /* Fix para el modal */
+  .modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal.active {
+    display: flex !important;
+  }
+  /* Optimización de rendimiento */
+  * {
+    will-change: auto !important; /* Quitar will-change que ralentiza */
+  }
+  /* Quitar animaciones pesadas */
+  .particle,
+  .heart {
+    display: none !important; /* Temporalmente ocultar para mejorar rendimiento */
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader inicial -->
+  <div class="loader" id="loader">
+    <div class="heart-loader"></div>
+  </div>
+
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Corazones flotantes -->
+  <div class="floating-hearts" id="floating-hearts"></div>
+
+  <!-- Header con navegación -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="recuerdos/recuerdos.html">Recuerdos</a></li>
+        <li><a href="comida/comida.html">Comida</a></li>
+        <li><a href="dedicatoria/dedicatoria.html">Dedicatoria</a></li>
+        <li><a href="video/video.html">Video</a></li>
+        <li><a href="juegos/juegos.html">Juegos</a></li>
+        <li><a href="pintar/pintar.html">Pintar</a></li>
+        <li><a href="extras/extras.html">Sorpresas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="reveal-text">Feliz Cumple, Bombon 💖</h1>
+    <p class="intro-text">Un repaso de todo lo que vivimos juntos, con mucho amor y magia ✨</p>
+    <p class="typewriter" id="typewriter">Gracias por ser mi alegría cada día 💖</p>
+
+    <!-- Carrusel mejorado -->
+    <div class="carousel" id="carousel">
+      <img src="Imagenes_optimizadas/foto30.jpg" class="active" loading="lazy" alt="Foto nuestra en la playa">
+      <img src="Imagenes_optimizadas/foto2.jpg" loading="lazy" alt="Recuerdo de una salida especial">
+      <img src="Imagenes_optimizadas/foto3.jpg" loading="lazy" alt="Selfie divertida juntos">
+      <img src="Imagenes_optimizadas/foto4.jpg" loading="lazy" alt="Momento de nuestro viaje">
+      <img src="Imagenes_optimizadas/foto6.jpg" loading="lazy" alt="Celebrando un día importante">
+      <img src="Imagenes_optimizadas/foto7.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto9.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto10.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto15.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto16.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto18.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto19.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto21.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto24.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto25.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto27.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto31.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto32.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto33.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto35.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto36.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto39.jpg" loading="lazy" alt="Otra foto del carrusel">
+      <img src="Imagenes_optimizadas/foto58.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto59.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto60.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto61.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto62.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto63.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto64.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto65.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto66.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto67.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto68.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto69.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto70.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto77.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      <img src="Imagenes_optimizadas/foto82.jpg" loading="lazy" alt="Plato de comida que compartimos">
+      
+      <!-- Indicadores del carrusel -->
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+    </div>
+
+    <!-- Cards mejoradas -->
+    <div class="cards-container">
+      <div class="card" data-msg="Nunca voy a olvidar nuestra primera salida, fue mágica 💖" data-img="Imagenes_optimizadas/foto71.jpg">
+        <span class="card-icon">🌟</span>
+        <strong>Nuestra Historia</strong>
+        <p>Momentos únicos que siempre vamos a recordar con el corazón lleno de amor.</p>
+      </div>
+      <div class="card" data-msg="Este regalo lo hice con todo mi amor, solo para vos 💕" data-img="Imagenes_optimizadas/foto66.jpg">
+        <span class="card-icon">🎁</span>
+        <strong>Este regalo</strong>
+        <p>Un espacio digital hecho con amor, dedicación y pensando en cada detalle para vos.</p>
+      </div>
+      <div class="card" data-msg="Lo que viene será aún más lindo, lleno de sueños juntos ✨" data-img="Imagenes_optimizadas/foto75.jpg">
+        <span class="card-icon">💖</span>
+        <strong>Nuestro futuro</strong>
+        <p>Miles de aventuras, risas y momentos especiales que viviremos juntos.</p>
+      </div>
+    </div>
+
+    <!-- Timeline mejorado -->
+    <div class="timeline">
+      <div class="event" data-msg="Nuestra primera salida fue el inicio de todo 💞">
+        📍 Primera salida
+      </div>
+      <div class="event" data-msg="Nuestro viaje me hizo sentir que el mundo es más lindo con vos 🌎">
+        ✈️ Nuestro viaje
+      </div>
+      <div class="event" data-msg="Hoy y siempre juntos, mi persona favorita ❤️">
+        🌟 Siempre juntos
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="love-msg">Con vos, todo tiene sentido 💕</p>
+    <p>Hecho con amor infinito para la mujer más especial del mundo</p>
+  </footer>
+
+  <!-- Audio -->
+  <audio id="bg-music" loop>
+    <source src="audio/SpotiDownloader.com - Querido Tommy - Tommy Torres.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Botón de música -->
+  <button class="music-btn" id="musicBtn" aria-label="Reproducir música">🎵</button>
+
+  <!-- Modal mejorado -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <span class="close" role="button" tabindex="0" aria-label="Cerrar">&times;</span>
+      <img id="modal-img" src="" alt="Imagen">
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/core.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Script específico del index para efectos especiales -->
+  <script>
+    // Efectos especiales para el index
+    document.addEventListener('DOMContentLoaded', function() {
+      // Crear partículas de fondo
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.width = Math.random() * 5 + 3 + 'px';
+          particle.style.height = particle.style.width;
+          particle.style.animationDelay = Math.random() * 20 + 's';
+          particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+          particle.style.animation = `float-particle ${particle.style.animationDuration} ${particle.style.animationDelay} infinite linear`;
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Crear corazones flotantes
+      function createFloatingHearts() {
+        const heartsContainer = document.getElementById('floating-hearts');
+        
+        setInterval(() => {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.innerHTML = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
+          heart.style.left = Math.random() * 100 + '%';
+          heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+          heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+          heartsContainer.appendChild(heart);
+          
+          setTimeout(() => {
+            heart.remove();
+          }, 6000);
+        }, 3000);
+      }
+
+      // Inicializar efectos después del loader
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        createParticles();
+        createFloatingHearts();
+      }, 2000);
+
+      // Mensajes de amor aleatorios
+      const loveMessages = [
+        "Sos mi persona favorita 💕",
+        "Gracias por existir 🌟",
+        "Te amo hasta el infinito ∞",
+        "Mi corazón es tuyo 💖",
+        "Juntos para siempre 👫",
+        "Sos mi todo 🌍",
+        "Mi amor eterno 💝",
+        "Cada día te amo más 💗",
+        "Sos la luz de mi vida ✨"
+      ];
+
+      function showRandomLoveMessage() {
+        const message = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+        const popup = document.createElement('div');
+        popup.className = 'love-popup';
+        popup.textContent = message;
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 3000);
+      }
+
+      // Mostrar mensaje cada 30 segundos
+      setTimeout(() => {
+        showRandomLoveMessage();
+        setInterval(showRandomLoveMessage, 30000);
+      }, 5000);
+
+      // Efecto de explosión de corazones al hacer click en cards
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', function(e) {
+          createHeartBurst(e.pageX, e.pageY);
+        });
+      });
+
+      function createHeartBurst(x, y) {
+        for (let i = 0; i < 8; i++) {
+          const heart = document.createElement('div');
+          heart.innerHTML = '❤️';
+          heart.style.cssText = `
+            position: absolute;
+            left: ${x}px;
+            top: ${y}px;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 1s ease-out;
+          `;
+          document.body.appendChild(heart);
+          
+          const angle = (Math.PI * 2 * i) / 8;
+          const distance = 100;
+          const dx = Math.cos(angle) * distance;
+          const dy = Math.sin(angle) * distance;
+          
+          setTimeout(() => {
+            heart.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+            heart.style.opacity = '0';
+          }, 10);
+          
+          setTimeout(() => heart.remove(), 1000);
+        }
+      }
+
+      // Easter egg: Konami Code
+      const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                         'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+      let konamiIndex = 0;
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+          konamiIndex++;
+          if (konamiIndex === konamiCode.length) {
+            alert('¡Te amo infinito! 💖 Encontraste mi mensaje secreto');
+            // Lluvia de corazones especial
+            for (let i = 0; i < 50; i++) {
+              setTimeout(() => {
+                createHeartBurst(
+                  Math.random() * window.innerWidth,
+                  Math.random() * window.innerHeight
+                );
+              }, i * 50);
+            }
+            konamiIndex = 0;
+          }
+        } else {
+          konamiIndex = 0;
+        }
+      });
+    });
+  </script>
+  <script src="js/effects.js"></script>
+</body>
+</html>

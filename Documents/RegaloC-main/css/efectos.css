@@ -1,0 +1,262 @@
+/* =========================================
+   css/effects.css - Efectos visuales mágicos
+   ========================================= */
+
+/* ============================================
+   🌟 CURSOR PERSONALIZADO CON CORAZONES
+   ============================================ */
+body.custom-cursor {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="28" font-size="28">💕</text></svg>'), auto;
+}
+
+/* ============================================
+   ✨ EFECTO DE ESTRELLAS AL HACER CLICK
+   ============================================ */
+.click-effect {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: clickBurst 0.6s ease-out forwards;
+}
+
+@keyframes clickBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   💝 MENSAJE FLOTANTE DEL DÍA
+   ============================================ */
+.daily-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 30px 50px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  z-index: 10000;
+  text-align: center;
+  max-width: 80%;
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes popIn {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes popOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   🎵 VISUALIZADOR DE MÚSICA
+   ============================================ */
+.music-visualizer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  gap: 3px;
+  align-items: flex-end;
+  height: 40px;
+  z-index: 999;
+}
+
+.music-visualizer.active {
+  display: flex;
+}
+
+.music-bar {
+  width: 4px;
+  background: linear-gradient(to top, #e60073, #ff4da6);
+  animation: dance 0.6s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.music-bar:nth-child(1) { animation-delay: 0s; }
+.music-bar:nth-child(2) { animation-delay: 0.1s; }
+.music-bar:nth-child(3) { animation-delay: 0.2s; }
+.music-bar:nth-child(4) { animation-delay: 0.3s; }
+.music-bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes dance {
+  0%, 100% { height: 10px; }
+  50% { height: 30px; }
+}
+
+/* ============================================
+   📅 CONTADOR DE DÍAS JUNTOS
+   ============================================ */
+.love-counter {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 25px;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  font-weight: bold;
+  color: #e60073;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.love-counter:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(230, 0, 115, 0.3);
+}
+
+/* ============================================
+   🎁 CAJA DE SORPRESAS
+   ============================================ */
+.surprise-box {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e60073, #ff4da6);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 998;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 5px 20px rgba(230, 0, 115, 0.4);
+}
+
+.surprise-box:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.surprise-box::before {
+  content: "🎁";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+}
+
+.surprise-box.opened {
+  animation: boxShake 0.5s;
+}
+
+@keyframes boxShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+/* ============================================
+   💌 NOTIFICACIONES DE AMOR
+   ============================================ */
+.love-notification {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e60073;
+  z-index: 9999;
+  transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.love-notification.show {
+  top: 20px;
+}
+
+.love-notification::before {
+  content: "💝";
+  margin-right: 10px;
+  font-size: 1.5rem;
+  animation: heartbeat 1s infinite;
+}
+
+/* ============================================
+   🌸 PÉTALOS CAYENDO
+   ============================================ */
+.petal {
+  position: fixed;
+  top: -50px;
+  font-size: 20px;
+  z-index: 1;
+  animation: fall 10s linear forwards;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   💫 ESTRELLAS FUGACES
+   ============================================ */
+.shooting-star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: white;
+  box-shadow: 0 0 10px white;
+  z-index: 1;
+  animation: shootingStar 1s linear forwards;
+}
+
+@keyframes shootingStar {
+  to {
+    transform: translateX(100vw) translateY(100px);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   🎆 FUEGOS ARTIFICIALES
+   ============================================ */
+.firework-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

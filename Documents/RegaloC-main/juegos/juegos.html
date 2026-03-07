@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos divertidos 🎲</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/pages/juegos.css">
+  </head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../recuerdos/recuerdos.html">Recuerdos</a></li>
+        <li><a href="../comida/comida.html">Comida</a></li>
+        <li><a href="../dedicatoria/dedicatoria.html">Dedicatoria</a></li>
+        <li><a href="../video/video.html">Video</a></li>
+        <li><a href="../juegos/juegos.html" class="active">Juegos</a></li>
+        <li><a href="../pintar/pintar.html">Pintar</a></li>
+        <li><a href="../extras/extras.html">Sorpresas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="juegos" class="section-container">
+    <h2>Juegos divertidos 🎲</h2>
+    <p>Porque juntos siempre nos divertimos 💕</p>
+
+    <div id="sopa" class="game-card">
+      <h3>Sopa de Letras 💌</h3>
+      <canvas id="wordsearch" width="480" height="480"></canvas>
+      <h4>Palabras a buscar:</h4>
+      <ul id="lista-palabras"></ul>
+      <p id="sopa-msg"></p>
+    </div>
+
+    <div id="puzzle-container" class="game-card">
+      <h3>🧩 Arma nuestro recuerdo</h3>
+      <div id="puzzle-board"></div>
+      <button id="shuffle-puzzle-btn">🔄 Revolver</button>
+    </div>
+
+    <div id="hangman" class="game-card">
+      <h3>Ahorcado ✏️</h3>
+      <canvas id="hangmanCanvas" width="200" height="250"></canvas>
+      <p id="word"></p>
+      <p>Letras usadas: <span id="used-letters"></span></p>
+      <p>Intentos restantes: <span id="lives"></span></p>
+      <div class="hangman-controls">
+        <input type="text" id="letterInput" maxlength="1" placeholder="Letra">
+        <button id="guess-letter-btn">Probar</button>
+      </div>
+      <p id="message"></p>
+      <button id="restartBtn">🔄 Reiniciar</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Con mucho amor 💕</p>
+  </footer>
+  
+  <script src="../js/core.js"></script>
+  <script src="../js/games.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

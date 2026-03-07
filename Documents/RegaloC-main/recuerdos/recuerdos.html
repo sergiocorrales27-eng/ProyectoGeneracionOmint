@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuerdos 💕</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/pages/recuerdos.css"> </head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="recuerdos.html" class="active">Recuerdos</a></li>
+        <li><a href="../comida/comida.html">Comida</a></li>
+        <li><a href="../dedicatoria/dedicatoria.html">Dedicatoria</a></li>
+        <li><a href="../video/video.html">Video</a></li>
+        <li><a href="../juegos/juegos.html">Juegos</a></li>
+        <li><a href="../pintar/pintar.html">Pintar</a></li>
+        <li><a href="../extras/extras.html">Sorpresas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="recuerdos">
+    <h2>Nuestros recuerdos 💕</h2>
+    <p class="intro-text">Cada foto es un tesoro. Hacé clic en una para ver el recuerdo que guarda.</p>
+
+    <div class="gallery gallery-recuerdos">
+      <img src="../Imagenes_optimizadas/foto11.jpg" loading="lazy" alt="Selfie en nuestra primera salida"
+           data-text="💖 Nuestra primera salida 💖" data-img-src="../Imagenes_optimizadas/foto11.jpg">
+      <img src="../Imagenes_optimizadas/foto5.jpg" loading="lazy" alt="Celebrando juntos una noche especial"
+           data-text="Una noche mágica ✨" data-img-src="../Imagenes_optimizadas/foto5.jpg">
+      <img src="../Imagenes_optimizadas/foto13.jpg" loading="lazy" alt="Un abrazo fuerte entre nosotros"
+           data-text="Abrazo eterno 💞🫂" data-img-src="../Imagenes_optimizadas/foto13.jpg">
+      <img src="../Imagenes_optimizadas/foto25.jpg" loading="lazy" alt="Primer plano de sus ojos"
+           data-text="Tus ojitos 😍" data-img-src="../Imagenes_optimizadas/foto25.jpg">
+      <img src="../Imagenes_optimizadas/foto8.jpg" loading="lazy" alt="Riendo a carcajadas"
+           data-text="Reímos hasta el cansancio 😂" data-img-src="../Imagenes_optimizadas/foto8.jpg">
+      <img src="../Imagenes_optimizadas/foto14.jpg" loading="lazy" alt="Tomando una selfie"
+           data-text="Selfie de amor 📸" data-img-src="../Imagenes_optimizadas/foto14.jpg">
+      <img src="../Imagenes_optimizadas/foto20.jpg" loading="lazy" alt="Compartiendo un café"
+           data-text="Nuestro café favorito ☕" data-img-src="../Imagenes_optimizadas/foto20.jpg">
+      <img src="../Imagenes_optimizadas/foto43.jpg" loading="lazy" alt="Caminando de noche por la ciudad"
+           data-text="Noche de tragos 🌙🍸" data-img-src="../Imagenes_optimizadas/foto43.jpg">
+      <img src="../Imagenes_optimizadas/foto34.jpg" loading="lazy" alt="Haciendo caras graciosas"
+           data-text="Locuras juntos 🤪" data-img-src="../Imagenes_optimizadas/foto34.jpg">
+      <img src="../Imagenes_optimizadas/foto12.jpg" loading="lazy" alt="Mirándonos con complicidad"
+           data-text="Un recuerdo especial 🐨🐨" data-img-src="../Imagenes_optimizadas/foto12.jpg">
+      <img src="../Imagenes_optimizadas/foto40.jpg" loading="lazy" alt="Foto juntos en un evento"
+           data-text="Mi persona favorita 💖" data-img-src="../Imagenes_optimizadas/foto40.jpg">
+      <img src="../Imagenes_optimizadas/foto26.jpg" loading="lazy" alt="Un momento romántico"
+           data-text="Para siempre juntos 💍" data-img-src="../Imagenes_optimizadas/foto26.jpg">
+      <img src="../Imagenes_optimizadas/foto74.jpg" loading="lazy" alt="Un detalle que nos representa"
+           data-text="Algo que nos identifica a los dos 💖" data-img-src="../Imagenes_optimizadas/foto74.jpg">
+      <img src="../Imagenes_optimizadas/foto22.jpg" loading="lazy" alt="Miradas que enamoran" 
+           data-text="Una mirada inolvidable" data-img-src="../Imagenes_optimizadas/foto22.jpg">
+      <img src="../Imagenes_optimizadas/foto80.jpg" loading="lazy" alt="Una noche inolvidable" 
+           data-text="Una noche inolvidable 🎆🌠" data-img-src="../Imagenes_optimizadas/foto80.jpg">
+     <img src="../Imagenes_optimizadas/foto83.jpg" loading="lazy" alt="Mi nueva GymBro 🏋️" 
+           data-text="Mi nueva GymBro 🏋️" data-img-src="../Imagenes_optimizadas/foto83.jpg">
+     <img src="../Imagenes_optimizadas/foto84.jpg" loading="lazy" alt="Una flor para otra flor (de puta) 😂" 
+           data-text="Mi florcita 🌼" data-img-src="../Imagenes_optimizadas/foto84.jpg">
+     <img src="../Imagenes_optimizadas/foto87.jpg" loading="lazy" alt="Mi dormilona favorita 😴" 
+           data-text="Mi dormilona favorita 😴" data-img-src="../Imagenes_optimizadas/foto87.jpg">
+     <img src="../Imagenes_optimizadas/foto90.jpg" loading="lazy" alt="Mi compañera de viaje" 
+           data-text="Mi compañera de viaje!" data-img-src="../Imagenes_optimizadas/foto90.jpg">
+    </div>
+  </main>
+
+  <footer>
+    <p>Con mucho amor 💕</p>
+  </footer>
+
+  <!-- Modal mejorado -->
+   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <span class="close" role="button" tabindex="0" aria-label="Cerrar">&times;</span>
+      <img id="modal-img" src="" alt="Imagen" aria-describedby="modal-text">
+      <p id="modal-title" class="sr-only">Contenido del modal</p>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/gallery.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

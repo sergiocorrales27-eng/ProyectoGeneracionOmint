@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintar y Dibujar 🎨</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/pages/pintar.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../recuerdos/recuerdos.html">Recuerdos</a></li>
+        <li><a href="../comida/comida.html">Comida</a></li>
+        <li><a href="../dedicatoria/dedicatoria.html">Dedicatoria</a></li>
+        <li><a href="../video/video.html">Video</a></li>
+        <li><a href="../juegos/juegos.html">Juegos</a></li>
+        <li><a href="../pintar/pintar.html" class="active">Pintar</a></li>
+        <li><a href="../extras/extras.html">Sorpresas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="mandala" class="section-container">
+    <h2>Pintar y Dibujar 🎨</h2>
+    <p>Elegí un color y dibujá lo que quieras. ¡También podés cargar una foto nuestra para pintar encima!</p>
+    
+    <div class="paint-controls">
+      <label>Color: <input type="color" id="colorPicker" value="#e60073"></label>
+      <label>Grosor: <input type="range" id="brushSize" min="2" max="40" value="5"></label>
+      <button id="undoBtn">Deshacer</button>
+      <button id="clearCanvasBtn">Limpiar</button>
+      <input type="file" id="bgImageLoader" accept="image/*" style="display:none;">
+      <button id="uploadImageBtn">🖼️ Cargar Foto</button>
+    </div>
+
+    <canvas id="paintCanvas"></canvas>
+  </main>
+
+  <footer>
+    <p>Con mucho amor 💕</p>
+  </footer>
+  
+  <script src="../js/core.js"></script>
+  <script src="../js/pintar.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

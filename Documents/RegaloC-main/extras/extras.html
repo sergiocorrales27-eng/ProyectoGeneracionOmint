@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorpresas Especiales 💝</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    /* ============================================
+       ESTILOS MEJORADOS - DISEÑO HERMOSO
+       ============================================ */
+    
+    /* Fondo animado */
+    body {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Título principal mejorado */
+    main h1 {
+      font-size: 3.5rem;
+      text-align: center;
+      background: linear-gradient(45deg, #fff, #ffccf9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.3);
+      margin: 40px 0 20px 0;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .intro-text {
+      text-align: center;
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 40px;
+      font-style: italic;
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Grid mejorado */
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 35px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* Cards mejoradas con glassmorphism */
+    .extra-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 35px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .extra-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #e60073, #ff4da6, #e60073);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .extra-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(230, 0, 115, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .extra-card h3 {
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .extra-card h3::before {
+      content: attr(data-emoji);
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* QUIZ MEJORADO */
+    .quiz-container {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+    
+    #quiz-question {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+    
+    .quiz-btn, .quiz-option-btn {
+      width: 100%;
+      padding: 18px 25px;
+      margin: 10px 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .quiz-btn::before, .quiz-option-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .quiz-btn:hover::before, .quiz-option-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .quiz-btn:hover, .quiz-option-btn:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* CUPONES MEJORADOS */
+    .coupon {
+      background: linear-gradient(135deg, rgba(230, 0, 115, 0.9), rgba(255, 77, 166, 0.9));
+      color: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin: 15px 0;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(230, 0, 115, 0.3);
+    }
+    
+    .coupon::before {
+      content: "✂️";
+      position: absolute;
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 25px;
+      opacity: 0.7;
+    }
+    
+    .coupon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .coupon:hover::after {
+      left: 100%;
+    }
+    
+    .coupon:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(230, 0, 115, 0.4);
+    }
+    
+    .coupon-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .coupon-desc {
+      font-size: 1em;
+      opacity: 0.95;
+      margin-left: 30px;
+    }
+    
+    .coupon.used {
+      opacity: 0.5;
+      text-decoration: line-through;
+      pointer-events: none;
+      filter: grayscale(0.8);
+    }
+    
+    /* BOTÓN CUPÓN SORPRESA */
+    .generate-coupon-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 18px 30px;
+      background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .generate-coupon-btn::before {
+      content: '🎁';
+      position: absolute;
+      font-size: 50px;
+      opacity: 0.1;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+    }
+    
+    .generate-coupon-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+    
+    /* RULETA MEJORADA */
+    .wheel-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+    
+    #wheel-canvas {
+      display: block;
+      margin: 20px auto;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    #wheel-canvas:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Indicador de la ruleta FIJO */
+    .wheel-pointer {
+      position: absolute;
+      top: 50%;
+      right: 60px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 35px solid #e60073;
+      filter: drop-shadow(-3px 0 5px rgba(0, 0, 0, 0.3));
+      z-index: 10;
+    }
+    
+    .wheel-pointer::after {
+      content: '';
+      position: absolute;
+      right: -35px;
+      top: -8px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(230, 0, 115, 0.5);
+    }
+    
+    .spin-btn {
+      margin-top: 20px;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #e60073, #ff4da6);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(230, 0, 115, 0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .spin-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(230, 0, 115, 0.4);
+    }
+    
+    .spin-btn:active {
+      transform: scale(0.95);
+    }
+    
+    #wheel-result {
+      margin-top: 20px;
+      padding: 20px;
+      min-height: 60px;
+      text-align: center;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* COUNTDOWN MEJORADO */
+    .countdown {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+      padding: 40px;
+      border-radius: 25px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .countdown h4 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .countdown-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .countdown-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      min-width: 80px;
+    }
+    
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: bold;
+      display: block;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #fff, #ffccf9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .countdown-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .extras-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      
+      main h1 {
+        font-size: 2.5rem;
+      }
+      
+      .countdown-numbers {
+        gap: 15px;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+        padding: 15px 10px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+      }
+      
+      .wheel-pointer {
+        right: 30px;
+      }
+    }
+    
+    /* Animaciones adicionales */
+    @keyframes slideInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .extra-card {
+      animation: slideInUp 0.6s ease-out backwards;
+    }
+    
+    .extra-card:nth-child(1) { animation-delay: 0.1s; }
+    .extra-card:nth-child(2) { animation-delay: 0.2s; }
+    .extra-card:nth-child(3) { animation-delay: 0.3s; }
+    .extra-card:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../recuerdos/recuerdos.html">Recuerdos</a></li>
+        <li><a href="../comida/comida.html">Comida</a></li>
+        <li><a href="../dedicatoria/dedicatoria.html">Dedicatoria</a></li>
+        <li><a href="../video/video.html">Video</a></li>
+        <li><a href="../juegos/juegos.html">Juegos</a></li>
+        <li><a href="../pintar/pintar.html">Pintar</a></li>
+        <li><a href="extras.html" class="active">Sorpresas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Sorpresas Especiales</h1>
+    <p class="intro-text">Más cositas lindas para disfrutar juntos ✨</p>
+    
+    <div class="extras-grid">
+      
+      <!-- QUIZ DEL AMOR -->
+      <div class="extra-card">
+        <h3 data-emoji="💕">Quiz: ¿Cuánto me conocés?</h3>
+        <div class="quiz-container">
+          <div id="quiz-question">
+            <p>Poné a prueba cuánto sabés sobre mí 😊</p>
+          </div>
+          <div id="quiz-options" class="quiz-options"></div>
+          <button class="quiz-btn quiz-start-btn" onclick="startQuiz()">Empezar Quiz</button>
+          <div id="quiz-score"></div>
+        </div>
+      </div>
+      
+      <!-- CUPONES DE AMOR -->
+      <div class="extra-card">
+        <h3 data-emoji="🎟️">Cupones de Amor</h3>
+        <p style="color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 20px;">
+          Hacé click en un cupón para usarlo
+        </p>
+        <div id="coupons-container">
+          <div class="coupon" onclick="useCoupon(this)">
+            <div class="coupon-title">Vale por: Un masaje</div>
+            <div class="coupon-desc">30 minutos de relax total 💆‍♀️</div>
+          </div>
+          <div class="coupon" onclick="useCoupon(this)">
+            <div class="coupon-title">Vale por: Desayuno en la cama</div>
+            <div class="coupon-desc">Con todo lo que te gusta 🥐</div>
+          </div>
+          <div class="coupon" onclick="useCoupon(this)">
+            <div class="coupon-title">Vale por: Elijo la peli</div>
+            <div class="coupon-desc">Sin quejas permitidas 😄</div>
+          </div>
+        </div>
+        <button class="generate-coupon-btn" onclick="generateRandomCoupon()">
+          🎁 Cupón Sorpresa
+        </button>
+      </div>
+      
+      <!-- RULETA DE CITAS -->
+      <div class="extra-card">
+        <h3 data-emoji="🎡">Ruleta de Citas</h3>
+        <div class="wheel-container">
+          <canvas id="wheel-canvas" width="250" height="250"></canvas>
+          <div class="wheel-pointer"></div>
+        </div>
+        <button class="spin-btn" onclick="spinWheel()">Girar Ruleta</button>
+        <div id="wheel-result"></div>
+      </div>
+      
+      <!-- CUENTA REGRESIVA -->
+      <div class="extra-card">
+        <h3 data-emoji="⏰">Próximo Evento Especial</h3>
+        <div class="countdown">
+          <h4>💕 Próximo Aniversario en:</h4>
+          <div class="countdown-numbers">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">00</span>
+              <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">00</span>
+              <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">00</span>
+              <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="seconds">00</span>
+              <span class="countdown-label">Segundos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>Con mucho amor 💕</p>
+  </footer>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/extras.js"></script>
+</body>
+</html>
